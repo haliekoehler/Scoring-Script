@@ -1,6 +1,6 @@
-$(document).ready(function() {
+ $(document).ready(function() {
  
-	// Variables ---------------------------------------------------
+  // Variables ---------------------------------------------------
   const storage = window.localStorage;
   const url = window.location.href;
   const path = window.location.pathname;
@@ -12,15 +12,15 @@ $(document).ready(function() {
   //if (window.location.href.indexOf("start") > -1) {
     // if current url is /start do this...
     // clear localStorage when start page laods
-    // window.localStorage.clear();
- //} 
+      // window.localStorage.clear();
+  //} 
   if (window.location.href.indexOf("score") > -1) {
     // if current url is /score do this...
     // get score total, check conditions and display it
     totalScore(scoreBoard, totalQuestions);
   }
   
-  display();
+  display(); //<-- console.logging for testing
   
   // BUTTONS ------------------------------------------------------
   $("#start-btn").click(function() {
@@ -124,9 +124,9 @@ $(document).ready(function() {
     console.log(questions);
     
     for (let question of questions) {
-    	let point = question.point;
+      let point = question.point;
       if (point) {
-      	score++
+        score++
       }
     }
     console.log(score + " / " + qTotal);
@@ -148,31 +148,31 @@ $(document).ready(function() {
     }
     
     if(scoreBoard){
-    	 // Get org. board, return newboard with user input
-    	let board = scoreBoard;
-    	let newBoard = board.map(
-    		function(obj, index, array) {
-     	   // TODO: change this to an attribute later?
-    	    if (path.indexOf(obj.qNum) > -1) {
-          	let x = index + 1;
-     	   		if(x == obj.qNum) {
-          		obj.point = point;
-          	}
-        	} 
+       // Get org. board, return newboard with user input
+      let board = scoreBoard;
+      let newBoard = board.map(
+        function(obj, index, array) {
+         // TODO: change this to an attribute later?
+          if (path.indexOf(obj.qNum) > -1) {
+            let x = index + 1;
+            if(x == obj.qNum) {
+              obj.point = point;
+            }
+          } 
           return obj;
       }, 
-      	// thisArg
+        // thisArg
       );
       window.localStorage.setItem("scoreBoard", JSON.stringify(newBoard));
     }
   }
   
   function renderProgressBar (score, total) {
-		// render progress bar colors based on score
+    // render progress bar colors based on score
     let precentage = (score * 100) / total;
     let text = $("#score-text");
     let width = precentage +"%";
-		$(".progress-bar").css("width", width);
+    $(".progress-bar").css("width", width);
     text.text(precentage + "%");
     console.log("Score - " + precentage);
   }
