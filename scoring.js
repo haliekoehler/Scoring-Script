@@ -177,16 +177,48 @@
     let text = $("#score-text");
     // let width = precentage +"%";
 
-    // precentage / color breakdown
+    // message by precentage
     if(precentage <= 30){
-      let width = precentage + "%";
-      good.css("width", width);
+      text.text(precentage + "% - Seems like you've done pretty well consider the last two years. That's great!");
+    }
+    else if((precentage > 30) && (precentage <=70)){
+      text.text(precentage + "% - It looks like you've been hanging in there. You're not alone and we can help. ");
+    }
+    else if(precentage > 70){
+      text.text(precentage + "% - It looks like the pandemic has definitely made an impact on your life. You're not alone.");
     }
     
-  
+    // determine colors by precetage
+    if (precentage) {
+      let goodWidth;
+      let okWidth;
+      let badWidth;
 
-    text.text(precentage + "%");
-    console.log("Score - " + precentage);
+      // fill good range
+      if (precentage > 30) {
+        goodWidth = "30%";
+        $(good).css("width", goodWidth);
+      } else if (precentage <= 30){
+        goodWidth = precentage + "%";
+        $(good).css("width", goodWidth);
+      }
+
+      // fill ok range
+      if(precentage > 70){
+        okWidth = "40%";
+        $(ok).css("width", okWidth);
+      } else if ((precentage <= 70) && (precentage > 30)){
+        okWidth = precentage - 30;
+        $(ok).css("width", okWidth);
+      }
+
+      // fill bad range
+      if (precentage > 70){
+        badWidth = precentage - 70;
+        $(bad).css("width", badWidth);
+      }
+    }
+  
   };
   
   function display () {
@@ -198,9 +230,9 @@
     
     console.log(
       "----------------------------------------" + "\n" +
-      "Score - " + score + "\n" +
-      "qNum - " + qNum + "\n" +
-      "qTotal - " + qTotal + "\n" +
+     // "Score - " + score + "\n" +
+     // "qNum - " + qNum + "\n" +
+     // "qTotal - " + qTotal + "\n" +
       "scoreBoard - " + array + "\n" +
       "----------------------------------------" + "\n"
     );
