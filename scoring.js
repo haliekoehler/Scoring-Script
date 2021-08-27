@@ -168,14 +168,26 @@
   }
   
   function renderProgressBar (score, total) {
-    // render progress bar colors based on score
+    // render progress bar w/ colors based on score
+    const good = $(".bg-success");
+    const ok = $(".bg-warning");
+    const bad = $(".bg-danger");
+    
     let precentage = (score * 100) / total;
     let text = $("#score-text");
-    let width = precentage +"%";
-    $(".progress-bar").css("width", width);
+    // let width = precentage +"%";
+
+    // precentage / color breakdown
+    if(precentage <= 30){
+      let width = precentage + "%";
+      good.css("width", width);
+    }
+    
+  
+
     text.text(precentage + "%");
     console.log("Score - " + precentage);
-  }
+  };
   
   function display () {
     let output = JSON.stringify(storage); 
