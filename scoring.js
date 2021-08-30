@@ -52,65 +52,20 @@
   
   function createScore (total) {
     // send initial score info to localStroage
-    window.localStorage.setItem("qTotal", total);
-    window.localStorage.setItem("score", "0");
-    window.localStorage.setItem("qNum", "0");
+    let qTotal = total;
+    reset(qTotal);
 
     // create scoreboard
-    // TO DO: use loop to create based on qTotal (hardcoded temporarily)
+    let array = [];
 
-    const array = [
-      {
-        "qNum": 1,
-        "point": false,
-        "choice": ""
-      },
-      {
-        "qNum": 2,
-        "point": false,
-        "choice": ""
-      },
-      {
-        "qNum": 3,
-        "point": false,
-        "choice": ""
-      },
-      {
-        "qNum": 4,
-        "point": false,
-        "choice": ""
-      },
-      {
-        "qNum": 5,
-        "point": false,
-        "choice": ""
-      },
-      {
-        "qNum": 6,
-        "point": false,
-        "choice": ""
-      },
-      {
-        "qNum": 7,
-        "point": false,
-        "choice": ""
-      },
-      {
-        "qNum": 8,
-        "point": false,
-        "choice": ""
-      },
-      {
-        "qNum": 9,
-        "point": false,
-        "choice": ""
-      },
-      {
-        "qNum": 10,
-        "point": false,
-        "choice": ""
-      },
-    ];
+    for (let i = 0; i < qTotal; i++){
+      array.push(
+        {
+          "qNum": i+1, 
+          "point": false,
+        }
+      );
+    }
 
     // store stringified array in localStorage
     window.localStorage.setItem("scoreBoard", JSON.stringify(array));
@@ -173,7 +128,7 @@
     const ok = $(".bg-warning");
     const bad = $(".bg-danger");
     
-    let precentage = (score * 100) / total;
+    let precentage = parseInt((score * 100) / total);
     let text = $("#score-text");
     // let width = precentage +"%";
 
