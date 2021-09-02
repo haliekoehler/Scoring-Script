@@ -4,7 +4,7 @@
   const storage = window.localStorage;
   const url = window.location.href;
   const path = window.location.pathname;
-  const totalQuestions = 10;
+  const totalQuestions = 11;
   const scoreBoard = JSON.parse(localStorage.getItem("scoreBoard") || "[]");
   
 
@@ -134,13 +134,13 @@
 
     // message by precentage
     if(precentage <= 30){
-      text.text(precentage + "% - Seems like you've done pretty well consider the last two years. That's great!");
+      text.text(precentage + "% - Based on your answers, it sounds like you've been doing really well. We’re here to support you.");
     }
     else if((precentage > 30) && (precentage <=70)){
-      text.text(precentage + "% - It looks like you've been hanging in there. You're not alone and we can help. ");
+      text.text(precentage + "% - Based on your answers, it sounds like you’ve faced some challenges over the past couple years. We’re here to support you.");
     }
     else if(precentage > 70){
-      text.text(precentage + "% - It looks like the pandemic has definitely made an impact on your life. You're not alone.");
+      text.text(precentage + "% - Based on your answers, it sounds like the past few years have been really hard. You're not alone; we’re here to support you.");
     }
     
     // determine colors by precetage
