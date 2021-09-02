@@ -132,14 +132,27 @@
     const messageText = $("#score-message");
     const scoreText = $("#score-text");
 
-    // message by precentage
-    if(precentage <= 30){
-      messageText.text("Based on your answers, it sounds like you've been doing really well. We’re here to support you.");
-    } else if((precentage > 30) && (precentage <=70)){
-      messageText.text("Based on your answers, it sounds like you’ve faced some challenges over the past couple years. We’re here to support you.");
-    } else if(precentage > 70){
-      messageText.text("Based on your answers, it sounds like the past few years have been really hard. You're not alone; we’re here to support you.");
+    if (window.location.href.indexOf("team") > -1) {
+      // TEAM message by precentage
+      if(precentage <= 30){
+        messageText.text("Based on your answers, it sounds like you and your team have been doing really well. We’re here to support you.");
+      } else if((precentage > 30) && (precentage <=70)){
+        messageText.text("Based on your answers, it sounds like you and your team faced some challenges over the past couple years. We’re here to support you.");
+      } else if(precentage > 70){
+        messageText.text("Based on your answers, it sounds like the past few years have been really hard on you and your team. You're not alone; we’re here to support you.");
+      }
+    } else {
+      // INDIVIDUAL message by precentage
+      if(precentage <= 30){
+        messageText.text("Based on your answers, it sounds like you've been doing really well. We’re here to support you.");
+      } else if((precentage > 30) && (precentage <=70)){
+        messageText.text("Based on your answers, it sounds like you’ve faced some challenges over the past couple years. We’re here to support you.");
+      } else if(precentage > 70){
+        messageText.text("Based on your answers, it sounds like the past few years have been really hard. You're not alone; we’re here to support you.");
+      }
     }
+
+    
 
     // scoreText.text(precentage +"%");
     
