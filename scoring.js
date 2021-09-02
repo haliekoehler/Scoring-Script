@@ -141,7 +141,7 @@
       messageText.text("Based on your answers, it sounds like the past few years have been really hard. You're not alone; we’re here to support you.");
     }
 
-    scoreText.text(precentage +"%");
+    // scoreText.text(precentage +"%");
     
     // determine colors by precetage
     if (precentage) {
@@ -154,7 +154,7 @@
         goodWidth = "30%";
         $(good).css("width", goodWidth);
       } else if (precentage <= 30){
-        goodWidth = precentage + "%";
+        goodWidth = (precentage + "%");
         $(good).css("width", goodWidth);
       }
 
@@ -164,12 +164,14 @@
         $(ok).css("width", okWidth);
       } else if ((precentage <= 70) && (precentage > 30)){
         okWidth = precentage - 30;
+        okWidth = (okWidth + "%");
         $(ok).css("width", okWidth);
       }
 
       // fill bad range
       if (precentage > 70){
         badWidth = precentage - 70;
+        badWidth = (badWidth + "%");
         $(bad).css("width", badWidth);
       }
     }
