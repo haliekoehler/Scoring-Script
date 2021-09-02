@@ -127,12 +127,12 @@
     const good = $(".bg-success");
     const ok = $(".bg-warning");
     const bad = $(".bg-danger");
-    
-    let precentage = parseInt((score * 100) / total);
     const messageText = $("#score-message");
     const scoreText = $("#score-text");
 
-    if (window.location.href.indexOf("team") > -1) {
+    let precentage = parseInt((score * 100) / total);
+
+    if (window.location.pathname.indexOf("team/score") > -1 ) {
       // TEAM message by precentage
       if(precentage <= 30){
         messageText.text("Based on your answers, it sounds like you and your team have been doing really well. We’re here to support you.");
