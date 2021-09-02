@@ -129,19 +129,19 @@
     const bad = $(".bg-danger");
     
     let precentage = parseInt((score * 100) / total);
-    let text = $("#score-text");
-    // let width = precentage +"%";
+    const messageText = $("#score-message");
+    const scoreText = $("#score-text");
 
     // message by precentage
     if(precentage <= 30){
-      text.text(precentage + "% - Based on your answers, it sounds like you've been doing really well. We’re here to support you.");
+      messageText.text("Based on your answers, it sounds like you've been doing really well. We’re here to support you.");
+    } else if((precentage > 30) && (precentage <=70)){
+      messageText.text("Based on your answers, it sounds like you’ve faced some challenges over the past couple years. We’re here to support you.");
+    } else if(precentage > 70){
+      messageText.text("Based on your answers, it sounds like the past few years have been really hard. You're not alone; we’re here to support you.");
     }
-    else if((precentage > 30) && (precentage <=70)){
-      text.text(precentage + "% - Based on your answers, it sounds like you’ve faced some challenges over the past couple years. We’re here to support you.");
-    }
-    else if(precentage > 70){
-      text.text(precentage + "% - Based on your answers, it sounds like the past few years have been really hard. You're not alone; we’re here to support you.");
-    }
+
+    scoreText.text(precentage +"%");
     
     // determine colors by precetage
     if (precentage) {
