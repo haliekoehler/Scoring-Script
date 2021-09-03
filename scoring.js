@@ -129,26 +129,36 @@
     const bad = $(".bg-danger");
     const messageText = $("#score-message");
     const scoreText = $("#score-text");
+    const levelText = $("#level-text");
 
     let precentage = parseInt((score * 100) / total);
+    if (precentage < 10) {
+      precentage = 10;
+    }
 
     if (window.location.pathname.indexOf("team/score") > -1 ) {
       // TEAM message by precentage
       if(precentage <= 30){
-        messageText.text("Based on your answers, it sounds like you and your team have been doing really well. We’re here to support you.");
+        messageText.text("Based on your answers, it sounds like the last two years haven't been very challenging for your team. We’re here to support you.");
+        levelText.text("Not challenging").addClass("text-success");
       } else if((precentage > 30) && (precentage <=70)){
-        messageText.text("Based on your answers, it sounds like you and your team faced some challenges over the past couple years. We’re here to support you.");
+        messageText.text("Based on your answers, it sounds like the last two years have been challenging for your team. We’re here to support you.");
+        levelText.text("Challenging").addClass("text-warning");
       } else if(precentage > 70){
-        messageText.text("Based on your answers, it sounds like the past few years have been really hard on you and your team. You're not alone; we’re here to support you.");
+        messageText.text("Based on your answers, it sounds like the last two years have been very challenging for your team. We’re here to support you.");
+        levelText.text("Very challenging").addClass("text-danger");
       }
     } else {
       // INDIVIDUAL message by precentage
       if(precentage <= 30){
-        messageText.text("Based on your answers, it sounds like you've been doing really well. We’re here to support you.");
+        messageText.text("Based on your answers, it sounds like the last two years haven't been very challenging. We’re here to support you.");
+        levelText.text("Not challenging").addClass("text-success");
       } else if((precentage > 30) && (precentage <=70)){
-        messageText.text("Based on your answers, it sounds like you’ve faced some challenges over the past couple years. We’re here to support you.");
+        messageText.text("Based on your answers, it sounds like the last two years have been challenging. We’re here to support you.");
+        levelText.text("Challenging").addClass("text-warning");
       } else if(precentage > 70){
-        messageText.text("Based on your answers, it sounds like the past few years have been really hard. You're not alone; we’re here to support you.");
+        messageText.text("Based on your answers, it sounds like the last two years have been very challenging. We’re here to support you.");
+        levelText.text("Very challenging").addClass("text-danger");;
       }
     }
 
@@ -162,7 +172,6 @@
       let okWidth;
       let badWidth;
 
-      // fill good range
       if (precentage > 30) {
         goodWidth = "30%";
         $(good).css("width", goodWidth);
